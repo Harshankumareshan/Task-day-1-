@@ -1,0 +1,83 @@
+2.Write a blog about objects and its internal representation in Javascript
+
+
+Objects in JavaScript
+
+In JavaScript, an object is a collection of key-value pairs, where keys are strings (or symbols) and values can be of any data type, including other objects or functions. Objects are used to store and structure data, enabling the creation of complex structures and the implementation of various functionalities.
+
+Creating Objects
+There are multiple ways to create objects in JavaScript:
+
+1. Object Literal:
+const person = {
+  name: 'John Doe',
+  age: 30,
+  email: 'john@example.com'
+};
+
+2. Constructor Function:
+function Person(name, age, email) {
+  this.name = name;
+  this.age = age;
+  this.email = email;
+}
+
+const person = new Person('John Doe', 30, 'john@example.com');
+
+3.ES6 Classes:
+class Person {
+  constructor(name, age, email) {
+    this.name = name;
+    this.age = age;
+    this.email = email;
+  }
+}
+
+const person = new Person('John Doe', 30, 'john@example.com');
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Internal Representation of Objects
+
+Object Properties
+Internally, JavaScript engines represent objects using various data structures.
+ Objects in JavaScript are typically implemented using hash tables or similar mechanisms. Each property of an object is stored as a key-value pair within this underlying data structure.
+
+1.Property Access
+
+When accessing or modifying properties of an object, JavaScript engines perform property lookups to find the associated values.
+ This involves a process where the engine utilizes the key (property name) to retrieve or set the corresponding value stored in the object.
+
+console.log(person.name); // Output: 'John Doe'
+person.age = 31; // Modifying property value
+
+2.Object Methods
+
+Objects can also contain methods, which are functions assigned as properties. These methods can manipulate the object's data or perform specific actions related to the object.
+const person = {
+  name: 'John Doe',
+  greet: function() {
+    console.log(`Hello, my name is ${this.name}.`);
+  }
+};
+
+person.greet(); // Output: 'Hello, my name is John Doe.'
+
+3.Object Prototypes and Inheritance
+
+In JavaScript, objects can be linked to other objects through prototypes. Each object has an internal property called [[Prototype]] (accessible via __proto__ in modern JavaScript) that points to another object or null.
+ This mechanism allows for property inheritance and method delegation.
+const parent = {
+  greet: function() {
+    console.log('Greetings from the parent object!');
+  }
+};
+
+const child = {
+  age: 10
+};
+
+Object.setPrototypeOf(child, parent);
+
+child.greet(); // Output: 'Greetings from the parent object!'
+
+
